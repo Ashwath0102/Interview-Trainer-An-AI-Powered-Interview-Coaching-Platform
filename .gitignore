@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Environment variables — never commit secrets
+.env
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json

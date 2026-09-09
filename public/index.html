@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InterviewTrainer — Powered by IBM Granite</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">
+        <!-- Star / target icon -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <div>
+        <h1>InterviewTrainer</h1>
+        <span class="brand-sub">Powered by IBM Granite · Interview_Agent KB</span>
+      </div>
+    </div>
+    <nav class="tab-nav" id="tabNav">
+      <button class="tab-btn active" data-tab="generate">Generate Questions</button>
+      <button class="tab-btn" data-tab="resume">Resume Analyzer</button>
+      <button class="tab-btn" data-tab="evaluate">Answer Evaluator</button>
+      <button class="tab-btn" data-tab="chat">AI Coach Chat</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== MAIN ========== -->
+<main class="app-main">
+
+  <!-- ===== TAB: GENERATE QUESTIONS ===== -->
+  <section class="tab-content active" id="tab-generate">
+    <div class="panel">
+      <p class="panel-eyebrow">AI-Powered Prep</p>
+      <h2 class="panel-title">Generate Interview Questions</h2>
+      <p class="panel-desc">Choose a question type, fill in your role and level, and get 5 focused questions with model answers — grounded in the Interview_Agent knowledge base.</p>
+
+      <form id="generateForm" class="form-grid">
+
+        <div class="form-group full-width">
+          <label for="gen-qtype">Question Type <span class="label-hint">— what do you want to practice?</span></label>
+          <select id="gen-qtype">
+            <option value="Technical">Technical — coding, data structures, system design</option>
+            <option value="Behavioral">Behavioral — STAR format, soft skills, team dynamics</option>
+            <option value="HR">HR — salary, culture fit, career goals, motivation</option>
+            <option value="Evaluation">Evaluation — case studies, problem-solving, analytical</option>
+          </select>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label for="gen-role">Target Role <span class="label-hint">*</span></label>
+          <input type="text" id="gen-role" placeholder="e.g. Software Engineer, Data Scientist" required />
+        </div>
+        <div class="form-group">
+          <label for="gen-exp">Experience Level</label>
+          <select id="gen-exp">
+            <option value="Fresher (0-1 years)">Fresher (0–1 years)</option>
+            <option value="Junior (1-2 years)">Junior (1–2 years)</option>
+            <option value="Mid-level (2-4 years)" selected>Mid-level (2–4 years)</option>
+            <option value="Senior (5-8 years)">Senior (5–8 years)</option>
+            <option value="Lead / Principal (8+ years)">Lead / Principal (8+ years)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="gen-company">Target Company <span class="label-hint">optional</span></label>
+          <input type="text" id="gen-company" placeholder="e.g. Google, TCS, Infosys, Amazon" />
+        </div>
+        <div class="form-group full-width">
+          <label for="gen-resume">Paste Resume / Skills <span class="label-hint">optional — for more personal questions</span></label>
+          <textarea id="gen-resume" rows="4" placeholder="Paste your resume or list key skills here..."></textarea>
+        </div>
+
+        <div class="form-actions full-width">
+          <button type="submit" class="btn-primary" id="generateBtn">
+            <!-- Lightning bolt -->
+            <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            Generate 5 Questions
+          </button>
+        </div>
+      </form>
+
+      <div id="generateResult" class="result-box hidden"></div>
+    </div>
+  </section>
+
+  <!-- ===== TAB: RESUME ANALYZER ===== -->
+  <section class="tab-content" id="tab-resume">
+    <div class="panel">
+      <p class="panel-eyebrow">Know Your Strengths</p>
+      <h2 class="panel-title">Resume Analyzer</h2>
+      <p class="panel-desc">Paste your resume to get a role fit score, questions the interviewer will probe from your specific background, vulnerability areas, and a 30-day study plan.</p>
+
+      <form id="resumeForm" class="form-grid">
+        <div class="form-group">
+          <label for="res-role">Target Role <span class="label-hint">optional</span></label>
+          <input type="text" id="res-role" placeholder="e.g. Backend Engineer, ML Engineer" />
+        </div>
+        <div class="form-group">
+          <label for="res-company">Target Company <span class="label-hint">optional</span></label>
+          <input type="text" id="res-company" placeholder="e.g. Google, IBM, Wipro" />
+        </div>
+        <div class="form-group full-width">
+          <label for="res-text">Resume Text <span class="label-hint">*</span></label>
+          <textarea id="res-text" rows="11" placeholder="Paste your full resume here..." required></textarea>
+        </div>
+        <div class="form-actions full-width">
+          <button type="submit" class="btn-primary" id="resumeBtn">
+            <!-- Search / magnifier -->
+            <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            Analyze Resume
+          </button>
+        </div>
+      </form>
+
+      <div id="resumeResult" class="result-box hidden"></div>
+    </div>
+  </section>
+
+  <!-- ===== TAB: ANSWER EVALUATOR ===== -->
+  <section class="tab-content" id="tab-evaluate">
+    <div class="panel">
+      <p class="panel-eyebrow">Practice &amp; Improve</p>
+      <h2 class="panel-title">Answer Evaluator</h2>
+      <p class="panel-desc">Write your answer as if you were in the real interview. Get an honest score, gap analysis, and a polished model answer to learn from.</p>
+
+      <form id="evaluateForm" class="form-grid">
+        <div class="form-group">
+          <label for="eval-role">Role Context</label>
+          <input type="text" id="eval-role" placeholder="e.g. Software Engineer" value="Software Engineer" />
+        </div>
+        <div class="form-group full-width">
+          <label for="eval-question">Interview Question <span class="label-hint">*</span></label>
+          <textarea id="eval-question" rows="2" placeholder="Enter the question you want to practice answering..." required></textarea>
+        </div>
+        <div class="form-group full-width">
+          <label for="eval-answer">Your Answer <span class="label-hint">* — write as if you're in the interview right now</span></label>
+          <textarea id="eval-answer" rows="8" placeholder="Type your answer here..." required></textarea>
+        </div>
+        <div class="form-actions full-width">
+          <button type="submit" class="btn-primary" id="evaluateBtn">
+            <!-- Bar chart / evaluate -->
+            <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+            Evaluate My Answer
+          </button>
+        </div>
+      </form>
+
+      <div id="evaluateResult" class="result-box hidden"></div>
+    </div>
+  </section>
+
+  <!-- ===== TAB: AI COACH CHAT ===== -->
+  <section class="tab-content" id="tab-chat">
+    <div class="panel chat-panel">
+      <p class="panel-eyebrow">Your Personal Coach</p>
+      <h2 class="panel-title" style="margin-bottom:6px;">AI Coach Chat</h2>
+
+      <div class="chat-context-bar">
+        <input type="text" id="chat-role" placeholder="Your target role  (e.g. SDE-2, Data Scientist)" />
+        <input type="text" id="chat-company" placeholder="Company  (optional)" style="max-width:220px;" />
+      </div>
+
+      <div class="chat-window" id="chatWindow">
+        <div class="chat-msg assistant">
+          <div class="msg-avatar">
+            <!-- Robot head icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="10" rx="2"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/><line x1="9" y1="15" x2="9" y2="15"/><line x1="15" y1="15" x2="15" y2="15"/>
+            </svg>
+          </div>
+          <div class="msg-content">
+            <span class="msg-sender">InterviewTrainer</span>
+            <p>Hi! I'm your interview coach, grounded in the Interview_Agent knowledge base and powered by IBM Granite.</p>
+            <p>Tell me your target role and I'll help you prepare. You can ask me to:</p>
+            <ul>
+              <li>Generate questions for a specific role or company</li>
+              <li>Explain technical concepts in plain language</li>
+              <li>Give you a mock interview scenario</li>
+              <li>Help structure a STAR behavioral answer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input-bar">
+        <textarea id="chatInput" rows="2" placeholder="Ask anything about your interview prep… (Enter to send, Shift+Enter for new line)"></textarea>
+        <button class="btn-send" id="chatSendBtn" title="Send message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== STATUS BAR ========== -->
+<div class="status-bar" id="statusBar">
+  <div class="status-left">
+    <span class="status-dot" id="statusDot"></span>
+    <span id="statusText">Connecting to IBM Granite…</span>
+  </div>
+  <span style="color:var(--border);">Interview_Agent · ibm/granite-4-h-small</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
