@@ -32,6 +32,21 @@ server/
     promptBuilder.js  ← System prompt + question prompt templates
 ```
 
+---
+
+### How Agentic AI Drives Interview Trainer
+
+- RAG: Retrieval-Augmented Generation Before every LLM call, the system queries the Interview_Agent Watson Discovery vector index. Retrieved passages are injected into the system prompt, ensuring the model is grounded in domain knowledge rather than free to hallucinate.
+- Cache-Gated Pipeline Before RAG retrieval even begins, the agent checks an in-memory response cache. On a hit, the full result is returned immediately, skipping the Discovery query, system prompt construction, and all Granite calls. The agent observes the incoming request and decides whether the pipeline needs to run at all.
+- Multi-Step Sequential Reasoning Chain Call 1 generates Questions 1 through 3, and the output is fed back as assistant context. Call 2 continues with Questions 4 through 5 and tips. The server observes the intermediate output and decides the next prompt, establishing the agentic loop.
+- Grounded Persona as Agent Controller The system prompt defines strict rules: use retrieved context only, never fabricate, and prioritise company-specific patterns. The LLM operates within defined boundaries with prompt engineering acting as agent control.
+- Multi-Turn Memory AI Coach Chat maintains the last 6 conversation turns, allowing the agent to build on prior context rather than starting fresh each time. Chat is intentionally excluded from caching because responses are stateful and context-dependent.
+- Graceful Fallback Strategy If Watson Discovery is unreachable, the agent automatically falls back to built-in domain knowledge so the pipeline never breaks.
+
+Beyond a single prompt, the system functions as a reasoning pipeline that retrieves, observes, caches, continues, and grounds every response. The model does not pick its own tools, but it uses core building blocks including RAG for grounding, a pre-pipeline cache gate for efficiency, multi-step chaining where the output of one step feeds the next, and a controlled reasoning persona.
+
+---
+
 ### Data Flow
 
 ```
@@ -149,8 +164,16 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
+### Future Additions
+
+- Video and Voice-Based Interview Simulator with chat
+- Self-Evaluation Loop
+- Company based Live knowledge questions
+
+---
+
 ## Security Notes
 
-- Never commit your `.env` file (it is `.gitignore`d)
+- Never commit `.env` file (it is `.gitignore`d)
 - Rotate the IBM API key after sharing this project
 - The IAM token is cached and refreshed automatically 5 minutes before expiry
