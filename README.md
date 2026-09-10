@@ -73,9 +73,9 @@ cp .env.example .env
 
 Edit `.env`:
 ```
-IBM_API_KEY=rTUaVmUraoMVOg20k0glewNtHRMKo1EMLmdFzeXmXv98
+IBM_API_KEY=YOUR_API_KEY_HERE
 IBM_ML_URL=https://us-south.ml.cloud.ibm.com
-IBM_PROJECT_ID=60b20a3f-d83b-442e-a387-a886d89212c6
+IBM_PROJECT_ID=YOUR_GRANITE-MODEL-PROJ_ID
 IBM_MODEL_ID=ibm/granite-4-h-small
 WATSON_DISCOVERY_URL=https://api.us-south.discovery.watson.cloud.ibm.com
 WATSON_DISCOVERY_VERSION=2023-03-31
