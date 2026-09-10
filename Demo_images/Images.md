@@ -1,11 +1,13 @@
 # 🎯 InterviewTrainer — AI Interview Coach Demo Pictures
 
-<img width="1920" height="1080" alt="Screenshot (3362)" src="https://github.com/user-attachments/assets/9e1d2b77-5a68-4957-8460-5f8c2b090a4b" />
-<img width="1920" height="1080" alt="Screenshot (3363)" src="https://github.com/user-attachments/assets/20e385e4-6f21-4603-bf2b-b9fb3102770c" />
-<img width="1920" height="1080" alt="Screenshot (3370)" src="https://github.com/user-attachments/assets/c22d8c4b-7e1a-4b0f-b97f-6e273e9f0a0c" />
-<img width="1920" height="1080" alt="Screenshot (3371)" src="https://github.com/user-attachments/assets/9cbb20ba-5b5e-4f82-bbcc-1cb4ec2ad3d3" />
-<img width="1920" height="1080" alt="Screenshot (3368)" src="https://github.com/user-attachments/assets/6ad9f68d-b74c-451a-a1cd-c8006c81b04a" />
-<img width="1920" height="1080" alt="Screenshot (3375)" src="https://github.com/user-attachments/assets/d3d8e91e-8898-490f-9a7f-6ea2238c22e9" />
-<img width="1920" height="1080" alt="Screenshot (3374)" src="https://github.com/user-attachments/assets/4648bc2c-7928-46fa-b293-43c0b67545cc" />
+<img width="1920" height="913" alt="Screenshot (3362)" src="https://github.com/user-attachments/assets/046b6764-4249-4cf3-88cf-02b852522872" />
+
+<img width="1920" height="906" alt="Screenshot (3363)" src="https://github.com/user-attachments/assets/ec2133be-52f8-4a0c-ac71-8119a3d7fc12" />
+<img width="1920" height="910" alt="Screenshot (3370)" src="https://github.com/user-attachments/assets/839aa05f-b1f6-4cba-b74e-af9c6005c3a6" />
+<img width="1920" height="909" alt="Screenshot (3371)" src="https://github.com/user-attachments/assets/e41e4371-27e0-4fef-8e2f-46cb9751d240" />
+
+<img width="1920" height="907" alt="Screenshot (3368)" src="https://github.com/user-attachments/assets/8c11e867-b93d-44b5-b5f7-6df8f3189756" />
 
 
+<img width="1920" height="911" alt="Screenshot (3374)" src="https://github.com/user-attachments/assets/85b27a21-56a1-4058-a81b-e5f61ed193bc" />
+<img width="1920" height="907" alt="Screenshot (3375)" src="https://github.com/user-attachments/assets/a637ea9e-ecb0-4a5c-9d84-4978970ff12f" />
