@@ -31,6 +31,7 @@ server/
     knowledgeBase.js  ← Watson Discovery vector search + fallback knowledge
     promptBuilder.js  ← System prompt + question prompt templates
 ```
+<img width="3600" height="2276" alt="mermaidaiagent interview" src="https://github.com/user-attachments/assets/38fdd47b-473e-40db-8e23-95c034a343ce" />
 
 ---
 
